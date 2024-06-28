@@ -1,0 +1,5 @@
+package org.sakaiproject.tool.imagedetector.model;
+
+public class SearchMosModel {
+
+}

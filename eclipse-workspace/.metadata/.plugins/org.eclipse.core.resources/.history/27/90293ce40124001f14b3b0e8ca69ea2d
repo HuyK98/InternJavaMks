@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Media MKS</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <link rel="shortcut icon" type="x-icon" href="AI.png">
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-auto">
+        <a th:href="@{/images/filter}" class="btn btn-secondary">Images</a>
+      </div>
+      <div class="col-auto">
+        <a th:href="@{/videos/filter}" class="btn btn-secondary">Videos</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchInput" placeholder="Search for images...">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="searchButton">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container mt-5">
+    <h2 class="text-center">List of Files</h2>
+
+    <div th:if="${files.size() > 0}" class="row" id="fileList">
+      <!-- Content will be dynamically loaded here -->
+    </div>
+
+    <div th:unless="${files.size() > 0}" class="alert alert-warning text-center">
+      <span>No files found!</span>
+    </div>
+  </div>
+
+  <div th:replace="fragments/footer :: footer"></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="confirmText"></span>
+          <div class="spinner-border text-danger d-none" id="loadingSpinner" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="yesBtn">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#largeIconViewBtn").on("click", function (e) {
+        e.preventDefault();
+        // Gửi yêu cầu AJAX để lấy dữ liệu cho chế độ xem biểu tượng lớn
+        $.get("/largeIconView", function (data) {
+          $("#fileList").html(data);
+          console.log('Switching to Large Icon View');
+        });
+      });
+
+      $("#detailPanelBtn").on("click", function (e) {
+        e.preventDefault();
+        // Gửi yêu cầu AJAX để lấy dữ liệu cho chế độ xem chi tiết
+        $.get("/detailPanel", function (data) {
+          $("#fileList").html(data);
+          console.log('Showing Detail Panel');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+package org.sakaiproject.tool.imagedetector.controller;
+
+public class WebClient {
+
+	public static Object builder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object post() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object post() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

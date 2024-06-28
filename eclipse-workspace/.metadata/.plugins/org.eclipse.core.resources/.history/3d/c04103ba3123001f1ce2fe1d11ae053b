@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Files</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/scripts.js}"></script>
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container mt-5">
+    <div class="row mb-3">
+      <div class="col text-center">
+        <button class="btn btn-primary" onclick="filterFiles('all')">All</button>
+        <button class="btn btn-secondary" onclick="window.location.href='/images/filter'">Images</button>
+        <button class="btn btn-secondary" onclick="window.location.href='/videos/filter'">Videos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <h2 class="text-center">List of Files</h2>
+
+    <div th:if="${files.size() > 0}" class="file-list">
+      <div class="row">
+        <div th:each="file : ${files}" class="col-sm-6 col-md-4 col-lg-3 file-item" th:classappend="${file.type}">
+          <div class="card">
+            <img th:if="${file.type == 'image'}" th:src="@{${file.url}}" class="card-img-top" alt="${file.name}">
+            <video th:if="${file.type == 'video'}" class="card-img-top" controls>
+              <source th:src="@{${file.url}}" type="video/mp4">
+            </video>
+            <div class="card-body text-center">
+              <h5 class="card-title">[[${file.name}]]</h5>
+              <a th:href="@{${file.url}}" class="btn btn-primary">Download</a>
+              <button type="button" th:fileName="${file.name}" th:data-url="@{'/files/delete/' + ${file.name}}" class="btn btn-danger btn-delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:unless="${files.size() > 0}" class="alert alert-warning text-center">
+      <span>No files found!</span>
+    </div>
+  </div>
+
+  <div th:replace="fragments/footer :: footer"></div>
+
+  <div class="modal fade text-center" id="confirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="confirmText"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="yesBtn" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function filterFiles(type) {
+      $(".file-item").hide();
+      if (type === 'all') {
+        $(".file-item").show();
+      } else {
+        $("." + type).show();
+      }
+    }
+
+    $(document).ready(function () {
+      $(".btn-delete").on("click", function (e) {
+        e.preventDefault();
+        let link = $(this);
+
+        let fileName = link.attr("fileName");
+        $("#yesBtn").attr("data-delete-url", link.data("url")); // Store the delete URL in data-delete-url
+        $("#confirmText").html("Do you want to delete the File: <strong>" + fileName + "</strong>?");
+        $("#confirmModal").modal();
+      });
+
+      // Handle "Yes" button click
+      $("#yesBtn").on("click", function () {
+        let deleteUrl = $(this).attr("data-delete-url");
+        $.ajax({
+          url: deleteUrl,
+          type: "DELETE", // Send a DELETE request
+          success: function () {
+            // File deleted successfully
+            // You can:
+            // 1. Refresh the page: location.reload();
+            // 2. Update the UI to remove the deleted file
+            // 3. Show a success message
+            alert("File deleted successfully!");
+            location.reload();
+          },
+          error: function () {
+            // Handle deletion error
+            alert("Error deleting file.");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

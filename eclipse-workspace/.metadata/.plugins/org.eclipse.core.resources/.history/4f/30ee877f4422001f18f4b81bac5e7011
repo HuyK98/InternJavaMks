@@ -1,0 +1,26 @@
+package com.bezkoder.spring.thymeleaf.image.upload.controller;
+
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+public class ErrorController  {
+
+    @RequestMapping("/custom-error")
+    public String handleError(HttpServletRequest request, Model model) {
+        // ... (logic xử lý lỗi)
+        return "error";
+    }
+
+    public String getErrorPath() {
+        return "/custom-error";
+    }
+}

@@ -1,0 +1,11 @@
+INDEX VERSION 1.134
+D:\project\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2293691447.index
+\searchpic-tool\src\main\java
+D:\project\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3951897615.index
+\samplewebapp-tool\target\generated-sources\annotations
+D:\project\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3834635476.index
+\imagedetector-tool\target\generated-sources\annotations
+D:\project\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2312008951.index
+\searchmos-tool\src\main\java
+D:\project\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\817874359.index
+\imagedetector-tool\target\generated-sources\annotations

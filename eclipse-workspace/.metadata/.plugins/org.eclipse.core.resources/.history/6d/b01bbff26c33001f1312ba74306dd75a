@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MyWorkspace App Marketplace - Mosquito species identification</title>
+    <th:block th:include="fragments/head"></th:block>
+</head>
+<style>
+</style>
+<body>
+    <th:block th:include="fragments/nav"></th:block>
+
+    <th:block th:include="fragments/frg_searchmos"></th:block>
+
+    <!-- Bottom Javascripts -->
+    <script type="text/javascript" th:src="@{/resources/searchmos.js}"></script>
+</body>
+</html>

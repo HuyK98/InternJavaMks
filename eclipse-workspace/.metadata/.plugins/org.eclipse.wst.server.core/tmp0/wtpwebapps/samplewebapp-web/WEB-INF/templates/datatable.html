@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Platform MyWorkspace Web Application - How to make grid data UI with Datatable</title>
+    <th:block th:include="fragments/head"></th:block>
+    <link rel="stylesheet" type="text/css" href="/library/webjars/datatables/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+	
+</head>
+<body>
+
+    <div th:replace="~{fragments/header :: header}">Header</div>
+    <th:block th:include="fragments/frg_datatable"></th:block>
+
+    <!-- Bottom Javascripts -->
+
+    <script type="text/javascript" th:src="@{/resources/js/datatable.js}" ></script>
+</body>
+</html>

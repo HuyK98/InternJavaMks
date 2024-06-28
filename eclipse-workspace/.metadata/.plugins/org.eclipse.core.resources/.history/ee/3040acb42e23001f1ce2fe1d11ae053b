@@ -1,0 +1,41 @@
+function filterFiles(type) {
+  $(".file-item").hide();
+  if (type === 'all') {
+    $(".file-item").show();
+  } else {
+    $("." + type).show();
+  }
+}
+
+$(document).ready(function () {
+    $(".btn-delete").on("click", function (e) {
+        e.preventDefault();
+        link = $(this);
+
+        fileName = link.attr("fileName");
+        $("#yesBtn").attr("data-delete-url", link.attr("href")); // Store the delete URL in data-delete-url
+        $("#confirmText").html("Do you want to delete the File: \<strong\>" + fileName + "\<\/strong\>?");
+        $("#confirmModal").modal();
+    });
+
+    // Handle "Yes" button click
+    $("#yesBtn").on("click", function () {
+        var deleteUrl = $(this).data("deleteUrl");
+        $.ajax({
+            url: deleteUrl,
+            type: "DELETE", // Send a DELETE request
+            success: function () {
+                // File deleted successfully
+                // You can:
+                // 1. Refresh the page: location.reload();
+                // 2. Update the UI to remove the deleted file
+                // 3. Show a success message
+                alert("File deleted successfully!");
+            },
+            error: function () {
+                // Handle deletion error
+                alert("Error deleting file.");
+            }
+        });
+    });
+});

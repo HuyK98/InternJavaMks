@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Files</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <a th:href="@{/images/filter}" class="btn btn-secondary">Images</a>
+      </div>
+      <div class="col-auto">
+        <a th:href="@{/videos/filter}" class="btn btn-secondary">Videos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="text-center">List of Files</h2>
+
+    <div th:if="${files.size() > 0}" class="row">
+      <div th:each="file : ${files}" class="col-md-4 mb-4">
+        <div class="card">
+          <div th:if="${file.type == 'image'}">
+            <img th:src="@{${file.url}}" class="card-img-top" alt="Image">
+          </div>
+          <div th:if="${file.type == 'video'}">
+            <video class="card-img-top" controls>
+              <source th:src="@{${file.url}}" type="video/mp4">
+            </video>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title" th:text="${file.name}"></h5>
+            <a th:href="@{${file.url}}" class="btn btn-primary">Download</a>
+            <button type="button" 
+        		th:fileName="${file.name}" 
+        		th:data-url="@{/files/} + ${file.name}" 
+        		class="btn btn-danger btn-delete">Delete
+			</button>	
+		</div>
+        </div>
+      </div>
+    </div>
+
+    <div th:unless="${files.size() > 0}" class="alert alert-warning text-center">
+      <span>No files found!</span>
+    </div>
+  </div>
+
+  <div th:replace="fragments/footer :: footer"></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="confirmText"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="yesBtn" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function filterFiles(type) {
+      $(".file-item").hide();
+      if (type === 'all') {
+        $(".file-item").show();
+      } else {
+        $("." + type).show();
+      }
+    }
+
+    $(document).ready(function () {
+    	  $(".btn-delete").on("click", function (e) {
+    	    e.preventDefault();
+    	    let link = $(this);
+
+    	    let fileName = link.attr("fileName");
+    	    let deleteUrl = link.data("url"); // Lấy URL xóa từ thuộc tính data-url của nút xóa
+    	    $("#yesBtn").data("delete-url", deleteUrl); // Đặt giá trị cho thuộc tính data-delete-url của nút Yes
+    	    $("#confirmText").html("Do you want to delete the File: <strong>" + fileName + "</strong>?");
+    	    $("#confirmModal").modal();
+    	  });
+
+    	  // Xử lý sự kiện click cho nút "Yes"
+    	  $("#yesBtn").on("click", function () {
+    	    let deleteUrl = $(this).data("delete-url");
+    	    $.ajax({
+    	      url: deleteUrl,
+    	      type: "DELETE", // Gửi yêu cầu DELETE
+    	      success: function () {
+    	        alert("File deleted successfully!");
+    	        location.reload(); // Tải lại trang sau khi xóa thành công
+    	      },
+    	      error: function () {
+    	        alert("Error deleting file.");
+    	      }
+    	    });
+    	  });
+    	});
+
+ </script>
+</body>
+
+</html>

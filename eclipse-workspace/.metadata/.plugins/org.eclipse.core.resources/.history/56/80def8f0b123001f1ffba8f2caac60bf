@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Media - Upload File</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-top: 50px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-margin {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="container">
+    <h3 class="mb-3">Upload File</h3>
+
+    <form id="uploadForm" method="post" th:action="@{/files/upload}" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="directory">Select Directory</label>
+        <select id="directory" name="directory" class="form-control">
+          <option value="">Root</option>
+          <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}"></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="input-file">Select File</label>
+        <input id="input-file" type="file" name="file" accept="image/png, image/jpeg, video/mp4" class="form-control-file" />
+      </div>
+      <button class="btn btn-primary float-right" type="submit">Upload</button>
+    </form>
+
+    <h3 class="mt-5">Manage Directories</h3>
+
+    <form id="createDirectoryForm" method="post" th:action="@{/directories/create}">
+      <div class="form-group">
+        <label for="dirname">Create New Directory</label>
+        <input id="dirname" type="text" name="dirname" class="form-control" />
+      </div>
+      <button class="btn btn-success btn-margin" type="submit">Create Directory</button>
+    </form>
+
+    <form id="deleteDirectoryForm" method="post" th:action="@{/directories/delete}">
+      <div class="form-group">
+        <label for="delete-dirname">Delete Directory</label>
+        <select id="delete-dirname" name="dirname" class="form-control">
+          <option value="">Select Directory</option>
+          <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}"></option>
+        </select>
+      </div>
+      <button class="btn btn-danger btn-margin" type="submit">Delete Directory</button>
+    </form>
+
+    <div th:if="${message != null}" class="alert alert-success mt-3" role="alert">
+      <span th:text="${message}"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div th:if="${error != null}" class="alert alert-danger mt-3" role="alert">
+      <span th:text="${error}"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

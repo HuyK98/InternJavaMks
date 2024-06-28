@@ -1,0 +1,6 @@
+package net.javaguides.registration_login_springboot.model;
+
+public class Role {
+	private Long id;
+	private String name;
+}

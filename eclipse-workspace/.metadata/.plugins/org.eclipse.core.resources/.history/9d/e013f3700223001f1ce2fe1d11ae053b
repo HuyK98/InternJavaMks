@@ -1,0 +1,20 @@
+function filterFiles(type) {
+  $(".file-item").hide();
+  if (type === 'all') {
+    $(".file-item").show();
+  } else {
+    $("." + type).show();
+  }
+}
+
+$(document).ready(function () {
+  $(".btn-delete").on("click", function (e) {
+    e.preventDefault();
+    link = $(this);
+
+    fileName = link.attr("fileName");
+    $("#yesBtn").attr("href", link.attr("href"));
+    $("#confirmText").html("Do you want to delete the File: <strong>" + fileName + "</strong>?");
+    $("#confirmModal").modal();
+  });
+});

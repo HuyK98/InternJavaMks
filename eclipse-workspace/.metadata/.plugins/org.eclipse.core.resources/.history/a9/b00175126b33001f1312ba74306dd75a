@@ -1,0 +1,12 @@
+package org.sakaiproject.tool.imagedetector.model;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class SearchMosModel implements Serializable{
+	private MultipartFile attachment;
+
+	public MultipartFile getAttachment() {
+		// TODO Auto-generated method stub
+	}
+
+}

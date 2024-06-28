@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;searchmos-web/src/main/webapp/WEB-INF/templates/fragments/frg_searchmod.html&apos; to &apos;frg_searchmos.html&apos;" description="Rename resource &apos;frg_searchmod.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/templates/fragments/frg_searchmod.html" name="frg_searchmos.html" stamp="1719294227897" updateReferences="true"/>
+</session>

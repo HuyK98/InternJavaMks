@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;HomeController.java&apos; to &apos;HandsontableExampleApplication.java&apos;&#x0D;&#x0A;- Original project: &apos;demo-webapp-handsontable&apos;&#x0D;&#x0A;- Destination element: &apos;HandsontableExampleApplication.java&apos;&#x0D;&#x0A;- Original element: &apos;HomeController.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" element1="controller/src/main/java/mks/platform/samplewebapp/controller/HomeController.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1718614012551" target="HandsontableExampleApplication.java" units="0" version="1.0"/>
+</session>

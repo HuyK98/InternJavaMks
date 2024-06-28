@@ -1,0 +1,6 @@
+#Tomcat publish data
+#Wed Jun 26 20:03:02 ICT 2024
+org.eclipse.jst.j2ee.server\:samplewebapp-api=WEB-INF/lib/samplewebapp-api-23.0.jar
+org.eclipse.jst.j2ee.server\:samplewebapp-controller=WEB-INF/lib/samplewebapp-controller-23.0.jar
+org.eclipse.jst.j2ee.server\:samplewebapp-common=WEB-INF/lib/samplewebapp-common-23.0.jar
+org.eclipse.jst.j2ee.server\:samplewebapp-impl=WEB-INF/lib/samplewebapp-impl-23.0.jar

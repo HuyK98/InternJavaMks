@@ -1,0 +1,32 @@
+/**
+ * Process event: upload button is clicked & uploaded file is available
+ */
+$(function () {
+    $('#attachment').on('change', function() {
+        // Auto submit form
+        $('#frm_searchmos').submit();
+    });
+});
+
+/**
+ * Process event: form is submitted
+ */
+// $(function () {
+//    $('#frm_searchmos').submit(function(e) {
+//        e.preventDefault();
+//
+//        var frm = $('#frm_newscreen');
+//        var formData = new FormData(this);
+//        
+//        $.ajax({
+//            url: frm.attr('action'),
+//            type: frm.attr('method'),
+//            data: formData,
+//            processData: false,
+//            contentType: false,
+//            success: function(response) {
+//                $('#resultText').html(response);
+//            }
+//        });
+//    });
+// });

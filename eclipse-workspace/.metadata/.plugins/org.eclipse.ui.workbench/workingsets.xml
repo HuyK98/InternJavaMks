@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1715578211072_0" label="Java Main Sources" name="Java Main Sources"/>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1715578211084_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1715658631279_3" label="imagedetector" name="imagedetector">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-impl" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-pack" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-controller" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-tool" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/imagedetector-web" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1716804066721_4" label="searchpic" name="searchpic"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1718341034676_5" label="demo-webapp-datatable" name="demo-webapp-datatable"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1718354394618_6" label="samplewebapp" name="samplewebapp">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-impl" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-pack" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-controller" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-tool" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/samplewebapp-web" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1718856284627_7" label="searchmos" name="searchmos"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1715578211741_2" label="Window Working Set" name="Aggregate for window 1715578211739"/>
+</workingSetManager>
